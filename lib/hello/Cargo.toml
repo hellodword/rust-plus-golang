@@ -8,6 +8,3 @@ version = "0.1.0"
 # This demo shows both. See https://doc.rust-lang.org/reference/linkage.html
 # for more information.
 crate-type = ["cdylib", "staticlib"]
-
-[dependencies]
-libc = "0.2.2"

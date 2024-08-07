@@ -36,3 +36,9 @@ test-rust-lib:
 .PHONY: clean
 clean:
 	rm -rf main_dynamic main_static lib/libhello.so lib/libhello.a lib/hello/target
+
+.PHONY: build-static-windows
+build-static-windows:
+	@cd lib/hello && cargo zigbuild --release --target x86_64-pc-windows-gnu
+	@cp lib/hello/target/x86_64-pc-windows-gnu/release/libhello.a lib/
+	CGO_ENABLED=1 CC="zig cc -target x86_64-windows-gnu" GOOS=windows go build main_static_windows.go
